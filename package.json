@@ -1,0 +1,34 @@
+{
+  "name": "openhim-mediator-facility-sync-tz",
+  "version": "0.6.0",
+  "description": "A mediator to synchronize facilities between openinfoman and HFR/DHIS2/VIMS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openhie/openhim-mediator-facility-sync-tz.git"
+  },
+  "keywords": [
+    "facility-sync-tz"
+  ],
+  "author": "Ally Shaban",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/openhie/openhim-mediator-facility-sync-tz/issues"
+  },
+  "homepage": "https://github.com/openhie/openhim-mediator-facility-sync-tz#readme",
+  "dependencies": {
+    "async": "^3.1.0",
+    "express": "^4.17.1",
+    "is-json": "^2.0.1",
+    "moment": "^2.24.0",
+    "openhim-mediator-utils": "^0.2.3",
+    "request": "^2.88.0",
+    "urijs": "^1.19.1",
+    "url": "^0.11.0",
+    "winston": "2.2.0"
+  },
+  "devDependencies": {}
+}

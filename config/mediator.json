@@ -1,0 +1,177 @@
+    {
+      "urn": "urn:uuid:7078b8b7-16b9-48cd-b8ad-38be64733d76",
+      "version": "0.0.1",
+      "name": "Synchronization Between mCSD Server and DHIS2",
+      "description": "Synchronization Between mCSD Server and DHIS2",
+      "config": {
+        "dhis2": {
+          "password": "",
+          "username": "",
+          "url": "",
+          "full": false,
+          "dousers": false,
+          "doservices": false,
+          "reset": false
+        },
+        "mcsdServer": {
+          "password": "",
+          "username": "",
+          "url": ""
+        }
+      },
+      "configDefs": [{
+        "param": "dhis2",
+        "displayName": "DHIS2",
+        "description": "DHIS2 Configuration Details",
+        "type": "struct",
+        "template": [{
+            "type": "string",
+            "description": "The base URL (e.g. http://dhis2.sl.moh.gov.sl)",
+            "displayName": "Base URL",
+            "param": "url"
+          },
+          {
+            "type": "string",
+            "description": "Username required to post and get DHIS2",
+            "displayName": "Username",
+            "param": "username"
+          },
+          {
+            "type": "password",
+            "description": "Password required to post and get DHIS2",
+            "displayName": "Password",
+            "param": "password"
+          },
+          {
+            "type": "bool",
+            "description": "Perform full sync",
+            "displayName": "Perform Full Sync",
+            "param": "full"
+          },
+          {
+            "type": "bool",
+            "description": "Pull Users",
+            "displayName": "Pull Users",
+            "param": "dousers"
+          },
+          {
+            "type": "bool",
+            "description": "Pull Services",
+            "displayName": "Pull Services",
+            "param": "doservices"
+          },
+          {
+            "type": "bool",
+            "description": "Reset Sync And Pull Everything",
+            "displayName": "Reset Sync",
+            "param": "reset"
+          }
+        ],
+        "values": []
+      }, {
+        "param": "mcsdServer",
+        "displayName": "mCSD Server",
+        "description": "The mCSD server details",
+        "type": "struct",
+        "template": [{
+            "type": "string",
+            "description": "The base URL",
+            "displayName": "URL",
+            "param": "url"
+          },
+          {
+            "type": "string",
+            "description": "Username required to post and get data",
+            "displayName": "Username",
+            "param": "username"
+          },
+          {
+            "type": "password",
+            "description": "Password required to post and get data",
+            "displayName": "Password",
+            "param": "password"
+          }
+        ],
+        "values": []
+      }],
+      "defaultChannelConfig": [{
+        "name": "AUTO - DXF To mCSD",
+        "urlPattern": "^/dxf_to_mcsd",
+        "pollingSchedule": "0 10 * * 6",
+        "autoRetryPeriodMinutes": 60,
+        "autoRetryEnabled": false,
+        "rewriteUrlsConfig": [],
+        "addAutoRewriteRules": true,
+        "rewriteUrls": false,
+        "status": "enabled",
+        "alerts": [],
+        "txRerunAcl": [],
+        "txViewFullAcl": [],
+        "txViewAcl": [],
+        "properties": [],
+        "matchContentTypes": [],
+        "routes": [{
+          "name": "Activate DXF To mCSD",
+          "secured": false,
+          "host": "localhost",
+          "port": 9002,
+          "path": "/DXFTomCSD",
+          "primary": true,
+          "forwardAuthHeader": false,
+          "status": "enabled",
+          "type": "http"
+        }],
+        "authType": "private",
+        "whitelist": [],
+        "allow": [
+          "sync"
+        ],
+        "type": "polling"
+      }, {
+        "name": "AUTO - mCSD To DXF",
+        "urlPattern": "^/mcsd_to_dxf",
+        "pollingSchedule": "0 10 * * 6",
+        "autoRetryPeriodMinutes": 60,
+        "autoRetryEnabled": false,
+        "rewriteUrlsConfig": [],
+        "addAutoRewriteRules": true,
+        "rewriteUrls": false,
+        "status": "enabled",
+        "alerts": [],
+        "txRerunAcl": [],
+        "txViewFullAcl": [],
+        "txViewAcl": [],
+        "properties": [],
+        "matchContentTypes": [],
+        "routes": [{
+          "name": "Activate mCSD To DXF",
+          "secured": false,
+          "host": "localhost",
+          "port": 9002,
+          "path": "/mCSDToDXF",
+          "primary": true,
+          "forwardAuthHeader": false,
+          "status": "enabled",
+          "type": "http"
+        }],
+        "authType": "private",
+        "whitelist": [],
+        "allow": [
+          "sync"
+        ],
+        "type": "polling"
+      }],
+      "endpoints": [{
+        "name": "Activate DXF to mCSD Sync",
+        "host": "localhost",
+        "path": "/DXFTomCSD",
+        "port": 9002,
+        "primary": true,
+        "forwardAuthHeader": false,
+        "status": "enabled",
+        "type": "http"
+      }],
+      "_uptime": 2201.945,
+      "_lastHeartbeat": "2017-12-15T03:47:03.365Z",
+      "_configModifiedTS": "2017-12-15T02:52:49.054Z"
+    }
